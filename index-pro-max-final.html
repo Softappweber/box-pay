@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>soloDS Box — Your Personal Cloud. ₹299 Lifetime.</title>
+<meta name="description" content="soloDS Box — Personal cloud with Box PIN Lock, Voice Notes, Box Contacts, Box Chat, Box Meet, Box Beats and 40+ premium features. One-time ₹299. Lifetime access. No subscription.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:#0a0a0f;
+  color:#f5f5f7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+
+/* ===== FLOATING BOX ===== */
+.floating-box{
+  position:fixed;
+  top:110px;right:30px;
+  width:70px;height:70px;
+  display:flex;align-items:center;justify-content:center;
+  z-index:99;
+  pointer-events:none;
+}
+.floating-box span{
+  font-size:52px;
+  filter:drop-shadow(0 15px 30px rgba(139,92,246,0.7)) drop-shadow(0 5px 15px rgba(99,102,241,0.5));
+  animation:floatBox 4s ease-in-out infinite;
+  display:block;
+}
+@keyframes floatBox{
+  0%,100%{transform:translateY(0) rotate(-5deg) scale(1)}
+  50%{transform:translateY(-20px) rotate(5deg) scale(1.05)}
+}
+@media(max-width:768px){.floating-box{display:none}}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:15px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(10,10,15,0.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo span{font-size:28px;filter:drop-shadow(0 5px 10px rgba(139,92,246,0.5));}
+.nav-text{font-size:17px;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(135deg,#c4b5fd,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-cta{
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff;border:0;padding:10px 20px;border-radius:10px;
+  font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;
+  transition:all 0.3s;
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(99,102,241,0.4)}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:120px 20px 60px;position:relative;
+}
+.hero::before{
+  content:'';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:1000px;height:1000px;
+  background:radial-gradient(circle,rgba(99,102,241,0.1),transparent 70%);
+  pointer-events:none;
+}
+.hero-content{max-width:900px;position:relative;z-index:1}
+.hero-logo{
+  width:120px;height:120px;margin:0 auto 25px;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-logo span{
+  font-size:90px;
+  filter:drop-shadow(0 25px 40px rgba(139,92,246,0.7)) drop-shadow(0 10px 20px rgba(99,102,241,0.5)) drop-shadow(0 0 50px rgba(167,139,250,0.4));
+  transform:perspective(500px) rotateX(5deg) rotateY(-5deg);
+  animation:heroFloat 3s ease-in-out infinite;
+  display:block;
+}
+@keyframes heroFloat{0%,100%{transform:translateY(0) rotateX(5deg) rotateY(-5deg)}50%{transform:translateY(-15px) rotateX(10deg) rotateY(5deg)}}
+.hero-badge{
+  display:inline-block;padding:8px 18px;
+  border:1px solid rgba(139,92,246,0.4);
+  border-radius:50px;font-size:12px;color:#a78bfa;
+  margin-bottom:20px;letter-spacing:1px;text-transform:uppercase;font-weight:600;
+}
+.hero h1{
+  font-size:58px;font-weight:900;line-height:1.1;
+  letter-spacing:-2px;margin-bottom:16px;
+  background:linear-gradient(135deg,#c4b5fd,#8b5cf6,#6366f1);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero p{font-size:18px;color:#a1a1aa;line-height:1.7;margin-bottom:35px}
+.hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff;border:0;padding:16px 36px;border-radius:14px;
+  font-size:17px;font-weight:700;cursor:pointer;text-decoration:none;
+  transition:all 0.3s;display:inline-block;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(99,102,241,0.5)}
+.btn-ghost{
+  background:transparent;color:#f5f5f7;
+  border:1px solid #2a2a35;padding:16px 36px;border-radius:14px;
+  font-size:17px;font-weight:500;cursor:pointer;text-decoration:none;
+  transition:all 0.3s;display:inline-block;
+}
+.btn-ghost:hover{border-color:#6366f1;color:#a78bfa}
+
+/* ===== SOCIAL PROOF BAR ===== */
+.social-proof{
+  display:flex;gap:20px;justify-content:center;flex-wrap:wrap;
+  margin-top:30px;font-size:14px;color:#a1a1aa;
+}
+.social-proof div{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(139,92,246,0.08);
+  border:1px solid rgba(139,92,246,0.2);
+  padding:8px 16px;border-radius:50px;
+}
+.social-proof strong{color:#c4b5fd}
+
+/* ===== SECTION ===== */
+section{padding:80px 40px;max-width:1200px;margin:auto}
+.section-title{text-align:center;font-size:36px;font-weight:800;margin-bottom:12px;letter-spacing:-1px;background:linear-gradient(135deg,#f5f5f7,#a1a1aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.section-sub{text-align:center;color:#6b6b76;font-size:16px;margin-bottom:50px}
+
+/* ===== FEATURE GRID ===== */
+.use-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.use-card{background:#131318;border:1px solid #23232e;border-radius:18px;padding:30px;transition:all 0.3s}
+.use-card:hover{border-color:#8b5cf6;transform:translateY(-6px);box-shadow:0 20px 50px rgba(139,92,246,0.15)}
+.use-icon{font-size:40px;margin-bottom:16px}
+.use-card h3{font-size:18px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.use-card p{font-size:14px;color:#6b6b76;line-height:1.7}
+.badge-pro{
+  font-size:10px;font-weight:800;letter-spacing:0.5px;
+  background:rgba(139,92,246,0.2);color:#c4b5fd;
+  padding:3px 8px;border-radius:6px;text-transform:uppercase;
+}
+.badge-promax{
+  font-size:10px;font-weight:800;letter-spacing:0.5px;
+  background:rgba(251,191,36,0.18);color:#fbbf24;
+  padding:3px 8px;border-radius:6px;text-transform:uppercase;
+}
+
+/* ===== BOX CONTACTS DEMO ===== */
+.box-demo{
+  background:linear-gradient(160deg,rgba(139,92,246,0.12),rgba(99,102,241,0.04));
+  border:1px solid rgba(139,92,246,0.3);
+  border-radius:22px;padding:36px;max-width:780px;margin:0 auto;
+}
+.box-demo h3{font-size:20px;margin-bottom:12px;text-align:center}
+.box-demo > p{color:#a1a1aa;text-align:center;margin-bottom:28px;font-size:15px}
+.url-row{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap}
+.url-pill{
+  background:rgba(0,0,0,0.4);
+  border:1px solid rgba(139,92,246,0.4);
+  padding:14px 22px;border-radius:12px;
+  font-family:'Courier New',monospace;
+  font-size:14px;color:#c4b5fd;
+}
+.url-arrow{font-size:26px;color:#8b5cf6}
+
+/* ===== COMPARISON ===== */
+.compare-wrap{overflow-x:auto}
+table.compare{
+  width:100%;border-collapse:collapse;min-width:720px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid #23232e;border-radius:18px;overflow:hidden;
+}
+table.compare th,table.compare td{
+  padding:16px 18px;text-align:left;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  font-size:14px;
+}
+table.compare th{
+  background:rgba(139,92,246,0.1);
+  font-weight:700;font-size:12px;text-transform:uppercase;
+  letter-spacing:0.5px;color:#c4b5fd;
+}
+table.compare tr:last-child td{border-bottom:none}
+table.compare td.win{color:#6ee7a8;font-weight:700}
+table.compare td.lose{color:#ff7a7a}
+table.compare .highlight{background:rgba(139,92,246,0.06)}
+
+/* ===== STEPS ===== */
+.scenario-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.scenario-card{background:#131318;border:1px solid #23232e;border-radius:18px;padding:30px;transition:all 0.3s;border-left:3px solid #8b5cf6}
+.scenario-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(139,92,246,0.15)}
+.scenario-icon{font-size:36px;margin-bottom:14px}
+.scenario-card h3{font-size:17px;font-weight:700;margin-bottom:10px}
+.scenario-card p{font-size:14px;color:#6b6b76;line-height:1.7}
+
+/* ===== PRICING ===== */
+.pricing-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:26px;max-width:880px;margin:0 auto;
+}
+.price-card{
+  background:#131318;border:1px solid #23232e;
+  border-radius:24px;padding:48px 36px;position:relative;transition:all 0.3s;
+}
+.price-card.featured{
+  border:2px solid #8b5cf6;
+  background:linear-gradient(160deg,rgba(139,92,246,0.1),#131318);
+  box-shadow:0 20px 60px rgba(139,92,246,0.2);
+}
+.price-badge{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;
+  padding:6px 20px;border-radius:50px;font-size:13px;font-weight:700;
+  white-space:nowrap;
+}
+.price-card h3{font-size:22px;margin-bottom:8px;font-weight:800}
+.price-card .desc{color:#6b6b76;font-size:14px;margin-bottom:22px}
+.price{
+  font-size:56px;font-weight:900;
+  background:linear-gradient(135deg,#c4b5fd,#8b5cf6);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:-2px;
+}
+.price span{font-size:18px;font-weight:400;color:#6b6b76;-webkit-text-fill-color:#6b6b76;letter-spacing:0}
+.price-note{color:#6b6b76;font-size:13.5px;margin:16px 0 28px}
+.feature-list{list-style:none;margin-bottom:36px;text-align:left}
+.feature-list li{padding:11px 0;color:#a1a1aa;font-size:14.5px;border-bottom:1px solid #1a1a22}
+.feature-list li:last-child{border-bottom:0}
+.feature-list li::before{content:'✓';color:#8b5cf6;font-weight:800;margin-right:10px}
+.feature-list li.limited::before{content:'★';color:#fbbf24}
+.btn-block{width:100%;text-align:center;display:block}
+
+/* ===== REVIEWS ===== */
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.review{
+  background:#131318;border:1px solid #23232e;border-radius:18px;padding:26px;
+  transition:all 0.3s;
+}
+.review:hover{border-color:#8b5cf6;transform:translateY(-4px)}
+.stars{color:#fbbf24;margin-bottom:14px;font-size:14px;letter-spacing:2px}
+.review p{color:#a1a1aa;font-size:14.5px;margin-bottom:18px;line-height:1.7}
+.reviewer{display:flex;align-items:center;gap:12px}
+.avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:15px;
+}
+.reviewer .name{font-weight:700;font-size:14px}
+.reviewer .role{color:#6b6b76;font-size:12.5px}
+
+/* ===== GUARANTEE ===== */
+.guarantee{
+  background:linear-gradient(135deg,rgba(110,231,168,0.08),rgba(139,92,246,0.05));
+  border:1px solid rgba(110,231,168,0.25);
+  border-radius:22px;padding:44px;text-align:center;
+  max-width:840px;margin:0 auto;
+}
+.guarantee .icon{font-size:48px;margin-bottom:16px}
+.guarantee h3{font-size:26px;margin-bottom:14px;font-weight:800}
+.guarantee p{color:#a1a1aa;font-size:15.5px;max-width:640px;margin:0 auto;line-height:1.7}
+
+/* ===== FAQ ===== */
+.faq-item{
+  background:#131318;border:1px solid #23232e;
+  border-radius:14px;margin-bottom:12px;overflow:hidden;
+}
+.faq-item summary{
+  padding:20px 24px;cursor:pointer;
+  font-weight:600;font-size:16px;
+  list-style:none;position:relative;color:#f5f5f7;
+}
+.faq-item summary::after{
+  content:'+';position:absolute;right:24px;top:50%;
+  transform:translateY(-50%);font-size:22px;color:#8b5cf6;
+  transition:transform 0.2s;
+}
+.faq-item[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq-item p{padding:0 24px 22px;color:#a1a1aa;font-size:15px;line-height:1.7}
+
+/* ===== FINAL CTA ===== */
+.final-cta{
+  text-align:center;padding:100px 24px;
+  background:radial-gradient(ellipse at center,rgba(139,92,246,0.15),transparent 70%);
+}
+.final-cta h2{
+  font-size:clamp(30px,5vw,52px);font-weight:900;
+  letter-spacing:-1.5px;margin-bottom:20px;
+  background:linear-gradient(135deg,#f5f5f7,#c4b5fd);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.final-cta p{color:#a1a1aa;font-size:18px;margin-bottom:36px;max-width:620px;margin-left:auto;margin-right:auto}
+
+/* ===== FOOTER ===== */
+.footer{text-align:center;padding:40px;border-top:1px solid #1a1a22;margin-top:60px}
+.footer p{color:#6b6b76;font-size:12px;margin-top:8px;line-height:1.8}
+.solods{font-weight:700;color:#a78bfa;font-size:14px}
+.footer a{color:#9090a8;margin:0 12px}
+.footer a:hover{color:#a78bfa}
+
+@media(max-width:768px){
+  .hero h1{font-size:36px}
+  section{padding:50px 20px}
+  .section-title{font-size:26px}
+  .navbar{padding:12px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== FLOATING BOX ===== -->
+<div class="floating-box"><span>📦</span></div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="nav-logo">
+    <span>📦</span>
+    <span class="nav-text">soloDS Box</span>
+  </div>
+  <a href="https://softappweber.github.io/sushantcoder/?price=300" class="nav-cta">Get Box — ₹299</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-logo"><span>📦</span></div>
+    <div class="hero-badge">🔥 One-Time Payment • Lifetime Access • No Subscription</div>
+    <h1>Your Personal Cloud.<br>Beautifully Simple.</h1>
+    <p>Store photos, notes, bookmarks, links, voice notes and files.<br>Access from any device. No app install. No monthly fees. Ever.</p>
+    <div class="hero-buttons">
+      <a href="https://softappweber.github.io/sushantcoder/?price=300" class="btn-primary">Get Pro — ₹299 Lifetime</a>
+      <a href="https://softappweber.github.io/sushantcoder/?price=500" class="btn-ghost">Go Pro Max — ₹499</a>
+    </div>
+    <div class="social-proof">
+      <div>👥 <strong>1,247</strong> users joined</div>
+      <div>⭐ <strong>4.9/5</strong> average rating</div>
+      <div>🛡️ <strong>7-day</strong> refund</div>
+      <div>🇮🇳 Made in India</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CORE FEATURES ===== -->
+<section id="features">
+  <h2 class="section-title">Made For Your Life</h2>
+  <p class="section-sub">One Box. Endless possibilities. Everything you need to store, share & organize your digital life.</p>
+  <div class="use-grid">
+    <div class="use-card"><div class="use-icon">📸</div><h3>Photo Memories</h3><p>Store all your important photos in one secure place. Auto-compression saves space without losing quality.</p></div>
+    <div class="use-card"><div class="use-icon">📝</div><h3>Quick Notes</h3><p>Write down ideas, reminders, or anything important. Your notes are always with you, on any device.</p></div>
+    <div class="use-card"><div class="use-icon">🔖</div><h3>Bookmark Library</h3><p>Save articles, recipes, or important links. Never lose a bookmark again. Everything organized.</p></div>
+    <div class="use-card"><div class="use-icon">🔗</div><h3>Link Collection</h3><p>Keep all your important URLs in one place. Access them from anywhere, anytime.</p></div>
+    <div class="use-card"><div class="use-icon">📁</div><h3>File Storage</h3><p>Upload documents, PDFs, ZIP files and more. Your files follow you everywhere.</p></div>
+    <div class="use-card"><div class="use-icon">🔒</div><h3>100% Private</h3><p>Your data stays in your own Google Drive. Only you have access. Complete privacy guaranteed.</p></div>
+    <div class="use-card"><div class="use-icon">📤</div><h3>Box-to-Box Share</h3><p>Share files from your Box to another Box. No WhatsApp, Email, or Telegram needed.</p></div>
+    <div class="use-card"><div class="use-icon">🔄</div><h3>Device-to-Device</h3><p>Mobile to Laptop. Desktop to Mobile. Files move freely between YOUR devices.</p></div>
+  </div>
+</section>
+
+<!-- ===== BOX CONTACTS ===== -->
+<section>
+  <h2 class="section-title">Box Contacts — Share Like Never Before</h2>
+  <p class="section-sub">Every user gets a unique Box URL. It works like a phone number — send files directly to any Box.</p>
+
+  <div class="box-demo">
+    <h3>📮 Your Box URL is your identity</h3>
+    <p>Share files from one Box to another — instantly, securely, directly. No middleman.</p>
+    <div class="url-row">
+      <div class="url-pill">tinyurl.com/user1</div>
+      <div class="url-arrow">→</div>
+      <div class="url-pill">tinyurl.com/user2</div>
+    </div>
+    <p style="color:#6b6b76;font-size:13px;text-align:center;margin-top:22px;">Add Box contacts. Send files directly. No compression, no size limits.</p>
+  </div>
+</section>
+
+<!-- ===== PRO FEATURES ===== -->
+<section id="pro">
+  <h2 class="section-title">🔥 Pro Features — Just ₹299</h2>
+  <p class="section-sub">Everything you need to make your Box powerful, private and professional.</p>
+  <div class="use-grid">
+    <div class="use-card"><div class="use-icon">🔐</div><h3>Box PIN Lock <span class="badge-pro">Pro</span></h3><p>Access your files without typing your Gmail password every time. Set a 4-digit PIN and unlock instantly.</p></div>
+    <div class="use-card"><div class="use-icon">🗜️</div><h3>Smart Compression <span class="badge-pro">Pro</span></h3><p>Auto-compress images — especially built for iPhone users. Save up to 70% space without visible quality loss.</p></div>
+    <div class="use-card"><div class="use-icon">🎤</div><h3>Voice Notes <span class="badge-pro">Pro</span></h3><p>Record audio directly in your Box. Perfect for ideas, reminders, meetings. One tap to record, one tap to save.</p></div>
+    <div class="use-card"><div class="use-icon">🔄</div><h3>File Conversion <span class="badge-pro">Pro</span></h3><p>Convert Text to PDF, Image to PDF, and more — right inside your Box. No external apps needed.</p></div>
+    <div class="use-card"><div class="use-icon">📸</div><h3>Click & Store <span class="badge-pro">Pro</span></h3><p>Click a photo on any phone, upload it directly to your Box. Saved to your Drive instantly.</p></div>
+    <div class="use-card"><div class="use-icon">📦</div><h3>ZIP Maker <span class="badge-pro">Pro</span></h3><p>Create ZIP files inside your Box and upload them online. Great for bulk sharing and backups.</p></div>
+    <div class="use-card"><div class="use-icon">🔍</div><h3>Smart Search <span class="badge-pro">Pro</span></h3><p>Search through all your files, notes, bookmarks and links in seconds. Find anything, instantly.</p></div>
+    <div class="use-card"><div class="use-icon">👁️</div><h3>File Preview <span class="badge-pro">Pro</span></h3><p>Preview images, PDFs and documents right in your dashboard — no download needed.</p></div>
+    <div class="use-card"><div class="use-icon">📁</div><h3>Folder View <span class="badge-pro">Pro</span></h3><p>Create subfolders to keep your files, photos and documents perfectly organized.</p></div>
+    <div class="use-card"><div class="use-icon">⬇️</div><h3>Direct Download <span class="badge-pro">Pro</span></h3><p>Download any file with one click. No redirects, no delays, no nonsense.</p></div>
+    <div class="use-card"><div class="use-icon">🔗</div><h3>Share Links <span class="badge-pro">Pro</span></h3><p>Send anyone a link to your file. They open it — done. No attachment limits.</p></div>
+    <div class="use-card"><div class="use-icon">📊</div><h3>Storage Meter <span class="badge-pro">Pro</span></h3><p>See exactly how much space you've used and how much is left. Stay in control.</p></div>
+    <div class="use-card"><div class="use-icon">🌙</div><h3>Auto Dark Mode <span class="badge-pro">Pro</span></h3><p>Follows your system theme automatically. Easy on the eyes, day and night.</p></div>
+    <div class="use-card"><div class="use-icon">🎨</div><h3>10 Premium Themes <span class="badge-pro">Pro</span></h3><p>Personalize your Box with 10 beautiful handcrafted themes. Make it truly yours.</p></div>
+    <div class="use-card"><div class="use-icon">🔗</div><h3>Custom Short Links <span class="badge-pro">Pro</span></h3><p>Create clean, short, memorable links for your files. Easy to share, easy to remember.</p></div>
+    <div class="use-card"><div class="use-icon">🎬</div><h3>Video Embed <span class="badge-pro">Pro</span></h3><p>Create videos and embed them directly to your website or blog with a single link.</p></div>
+    <div class="use-card"><div class="use-icon">📮</div><h3>Box Contacts <span class="badge-pro">Pro</span></h3><p>Add other Box users like phone contacts. Share files directly Box-to-Box.</p></div>
+    <div class="use-card"><div class="use-icon">💬</div><h3>Box Chat <span class="badge-pro">Pro</span></h3><p>Private Snapchat-style chat with other Box users. Send files, photos and messages — fast and secure.</p></div>
+    <div class="use-card"><div class="use-icon">📋</div><h3>Clipboard Sync <span class="badge-pro">Pro</span></h3><p>Copy text on one device, paste on another. Your clipboard follows you across all your Box devices.</p></div>
+    <div class="use-card"><div class="use-icon">🔔</div><h3>Smart Notifications <span class="badge-pro">Pro</span></h3><p>Get notified when someone shares a file, sends a message or views your link.</p></div>
+  </div>
+</section>
+
+<!-- ===== PRO MAX FEATURES ===== -->
+<section id="promax" style="background:rgba(251,191,36,0.02);">
+  <h2 class="section-title">💎 Pro Max Features — Just ₹499</h2>
+  <p class="section-sub">For power users. Box Meet, Box Beats, 20 themes, AI and more — everything Google charges monthly for.</p>
+  <div class="use-grid">
+    <div class="use-card"><div class="use-icon">🎨</div><h3>20 HQ Themes <span class="badge-promax">Pro Max</span></h3><p>Double the themes. A pop-up theme picker with 20 handcrafted HQ themes — from minimal to vibrant.</p></div>
+    <div class="use-card"><div class="use-icon">📞</div><h3>Box Calling <span class="badge-promax">Pro Max</span></h3><p>Voice calls to other Box users using WebRTC — free, encrypted, instant. No phone number needed.</p></div>
+    <div class="use-card"><div class="use-icon">🎥</div><h3>Box Meet <span class="badge-promax">Pro Max</span></h3><p>Video meetings up to 10 people — built inside your Box. No Google Meet, no Zoom, no extra app.</p></div>
+    <div class="use-card"><div class="use-icon">🎵</div><h3>Box Beats <span class="badge-promax">Pro Max</span></h3><p>Your own music & audio streaming space. Play your audio, create playlists, share beats with other Box users.</p></div>
+    <div class="use-card"><div class="use-icon">🤖</div><h3>AI Auto-Tag <span class="badge-promax">Pro Max</span></h3><p>AI automatically categorizes your files, photos and notes. Find anything without manual tagging.</p></div>
+    <div class="use-card"><div class="use-icon">🔄</div><h3>File Versioning <span class="badge-promax">Pro Max</span></h3><p>Every file keeps its history. Restore any previous version anytime — accidental deletes gone forever.</p></div>
+    <div class="use-card"><div class="use-icon">⚡</div><h3>Bulk Upload <span class="badge-promax">Pro Max</span></h3><p>Upload up to 50 files at once. Drag, drop, done. Perfect for backups and migrations.</p></div>
+    <div class="use-card"><div class="use-icon">📱</div><h3>QR Code Share <span class="badge-promax">Pro Max</span></h3><p>Generate a QR code for any file or folder. Scan to access. Perfect for events and quick sharing.</p></div>
+    <div class="use-card"><div class="use-icon">🔐</div><h3>Password Links <span class="badge-promax">Pro Max</span></h3><p>Add a PIN or password to any share link. Only people with the password can access your file.</p></div>
+    <div class="use-card"><div class="use-icon">⏰</div><h3>Expiry Links <span class="badge-promax">Pro Max</span></h3><p>Set share links to expire after 1 hour, 24 hours or 7 days. Full control over who sees what, when.</p></div>
+    <div class="use-card"><div class="use-icon">📈</div><h3>Analytics Dashboard <span class="badge-promax">Pro Max</span></h3><p>See who viewed your files, when, and from where. Know exactly how your shares perform.</p></div>
+    <div class="use-card"><div class="use-icon">📧</div><h3>Email Backup <span class="badge-promax">Pro Max</span></h3><p>Automatic daily backup of your notes, bookmarks and links to your email. Never lose data.</p></div>
+    <div class="use-card"><div class="use-icon">🌍</div><h3>Multi-Language <span class="badge-promax">Pro Max</span></h3><p>Use soloDS Box in Hindi, English, Tamil and more. Your Box, your language.</p></div>
+    <div class="use-card"><div class="use-icon">💾</div><h3>50GB Storage <span class="badge-promax">Pro Max</span></h3><p>More than triple the Pro storage. Perfect for photographers, creators and collectors.</p></div>
+    <div class="use-card"><div class="use-icon">🚀</div><h3>Priority Support <span class="badge-promax">Pro Max</span></h3><p>Direct WhatsApp support from the founder. Get help within hours, not days.</p></div>
+    <div class="use-card"><div class="use-icon">🎁</div><h3>Early Access <span class="badge-promax">Pro Max</span></h3><p>Be the first to try new tools and features before anyone else. Shape the future of Box.</p></div>
+  </div>
+</section>
+
+<!-- ===== COMPARISON ===== -->
+<section id="compare">
+  <h2 class="section-title">Why soloDS Box Beats Everything Else</h2>
+  <p class="section-sub">Google Drive, WhatsApp, Telegram, iCloud — they all cost more, give less, and own your data. We don't.</p>
+  <div class="compare-wrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Google Drive</th>
+          <th>WhatsApp / Telegram</th>
+          <th>iCloud</th>
+          <th>soloDS Box</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Price</td><td>₹130/month (100GB)</td><td>Free (limited)</td><td>₹75/month (50GB)</td><td class="win highlight">₹299 lifetime</td></tr>
+        <tr><td>Yearly Cost</td><td class="lose">₹1,560</td><td>Free</td><td class="lose">₹900</td><td class="win highlight">₹0</td></tr>
+        <tr><td>Storage</td><td>15GB shared</td><td>2GB / 5GB limit</td><td>5GB free</td><td class="win highlight">15GB / 50GB</td></tr>
+        <tr><td>Privacy</td><td class="lose">Google scans files</td><td class="lose">Meta/Telegram servers</td><td class="lose">Apple servers</td><td class="win highlight">Your own Drive</td></tr>
+        <tr><td>PIN Lock</td><td class="lose">❌</td><td class="lose">❌</td><td class="lose">❌</td><td class="win highlight">✅</td></tr>
+        <tr><td>Voice Notes</td><td class="lose">❌</td><td>✅ (chat only)</td><td class="lose">❌</td><td class="win highlight">✅ (saved + searchable)</td></tr>
+        <tr><td>File Conversion</td><td class="lose">❌</td><td class="lose">❌</td><td class="lose">❌</td><td class="win highlight">✅</td></tr>
+        <tr><td>Box-to-Box Share</td><td class="lose">❌</td><td class="lose">❌</td><td class="lose">❌</td><td class="win highlight">✅</td></tr>
+        <tr><td>Video Meetings</td><td>✅ (Meet)</td><td>✅ (limited)</td><td class="lose">❌</td><td class="win highlight">✅ (Pro Max)</td></tr>
+        <tr><td>Music Streaming</td><td class="lose">❌</td><td class="lose">❌</td><td class="lose">❌</td><td class="win highlight">✅ Box Beats</td></tr>
+        <tr><td>No Install Needed</td><td class="lose">❌</td><td class="lose">❌</td><td class="lose">❌</td><td class="win highlight">✅</td></tr>
+        <tr><td>Expiry Links</td><td class="lose">❌</td><td class="lose">❌</td><td class="lose">❌</td><td class="win highlight">✅</td></tr>
+        <tr><td>One-Time Payment</td><td class="lose">❌ (subscription)</td><td>✅ (free)</td><td class="lose">❌ (subscription)</td><td class="win highlight">✅ (lifetime)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:#6b6b76;font-size:13px;text-align:center;margin-top:24px;">Comparison based on standard consumer plans as of 2025. Google Drive 100GB = ₹1,560/year. iCloud 50GB = ₹900/year. soloDS Box = ₹299 once. Forever.</p>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="howitworks" style="background:rgba(139,92,246,0.03);">
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-sub">Three simple steps. No tutorials, no setup, no headaches.</p>
+  <div class="scenario-grid">
+    <div class="scenario-card"><div class="scenario-icon">1️⃣</div><h3>Login with Google</h3><p>One click. We connect to your own Google Drive — securely. Your files stay yours.</p></div>
+    <div class="scenario-card"><div class="scenario-icon">2️⃣</div><h3>Your Box is Ready</h3><p>Your personal cloud is live. Upload photos, notes, files, links — everything.</p></div>
+    <div class="scenario-card"><div class="scenario-icon">3️⃣</div><h3>Access Anywhere</h3><p>Open your Box link on any device — phone, laptop, tablet, friend's phone. Everything's there.</p></div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section id="pricing">
+  <h2 class="section-title">Simple. Honest. Affordable.</h2>
+  <p class="section-sub">Two plans. Both lifetime. No subscriptions, no hidden fees, no surprises.</p>
+
+  <div class="pricing-grid">
+    <!-- PRO -->
+    <div class="price-card">
+      <h3>Pro</h3>
+      <p class="desc">Everything you need to start. Perfect for students, professionals & everyday users.</p>
+      <div class="price">₹299 <span>one-time</span></div>
+      <p class="price-note">✓ Lifetime access • No subscription</p>
+      <ul class="feature-list">
+        <li>15GB Storage Space</li>
+        <li>Photos, Notes, Bookmarks & Files</li>
+        <li>Works on Any Device (No install)</li>
+        <li>10 Premium HQ Themes</li>
+        <li>Box PIN Lock</li>
+        <li>Box Contacts (Box-to-Box Share)</li>
+        <li>Box Chat (Snapchat-style)</li>
+        <li>Voice Notes</li>
+        <li>Smart Data Compression</li>
+        <li>File Conversion (Text → PDF)</li>
+        <li>Click & Store from Any Device</li>
+        <li>ZIP Maker + Online Upload</li>
+        <li>File Preview + Smart Search</li>
+        <li>Folder View + Direct Download</li>
+        <li>Share Links + Custom Short Links</li>
+        <li>Storage Meter + Auto Dark Mode</li>
+        <li>Clipboard Sync + Smart Notifications</li>
+        <li>Video Embed to Website</li>
+        <li>Device-to-Device Sync</li>
+        <li>Lifetime Access + Free Updates</li>
+      </ul>
+      <a href="https://softappweber.github.io/sushantcoder/?price=300" class="btn-primary btn-block">Buy Pro — ₹299</a>
+    </div>
+
+    <!-- PRO MAX -->
+    <div class="price-card featured">
+      <div class="price-badge">🔥 Best Value</div>
+      <h3>Pro Max</h3>
+      <p class="desc">Everything in Pro + Box Meet, Box Beats, 20 themes & AI. For power users.</p>
+      <div class="price">₹499 <span>one-time</span></div>
+      <p class="price-note">✓ Lifetime access • No subscription</p>
+      <ul class="feature-list">
+        <li class="limited">Everything in Pro, plus:</li>
+        <li>50GB Storage Space</li>
+        <li>20 HQ Premium Themes (Pop-up picker)</li>
+        <li>Box Calling (Voice) — WebRTC</li>
+        <li>Box Meet (Video Calls, up to 10 people)</li>
+        <li>Box Beats (Music & Audio Streaming)</li>
+        <li>AI Auto-Tag</li>
+        <li>File Versioning (Restore old versions)</li>
+        <li>Bulk Upload (50 files at once)</li>
+        <li>QR Code Share</li>
+        <li>Password-Protected Links</li>
+        <li>Expiry Links (1hr / 24hr / 7 days)</li>
+        <li>Analytics Dashboard</li>
+        <li>Email Backup (Daily auto-backup)</li>
+        <li>Multi-Language (Hindi, English, Tamil)</li>
+        <li>Priority Founder Support</li>
+        <li>Early Access to New Features</li>
+      </ul>
+      <a href="https://softappweber.github.io/sushantcoder/?price=500" class="btn-primary btn-block">Buy Pro Max — ₹499</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" style="background:rgba(139,92,246,0.03);">
+  <h2 class="section-title">What Users Are Saying</h2>
+  <p class="section-sub">Real feedback from people using soloDS Box every day.</p>
+  <div class="reviews">
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"I was paying ₹130/month for Google One. This gave me everything for ₹299 once. The PIN lock is a game-changer for my personal files."</p>
+      <div class="reviewer"><div class="avatar">R</div><div><div class="name">Rahul Sharma</div><div class="role">Student, Delhi</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"Voice notes saved my life. I record ideas on the go and they're saved in my Box. No other app does this so simply."</p>
+      <div class="reviewer"><div class="avatar">P</div><div><div class="name">Priya Mehta</div><div class="role">Content Creator, Mumbai</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"Box-to-Box share is genius. I send files to my brother's Box directly — no WhatsApp, no email. Just works."</p>
+      <div class="reviewer"><div class="avatar">A</div><div><div class="name">Amit Kumar</div><div class="role">Small Business Owner, Jaipur</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"Pro Max is unbelievable value. Video calls, 20 themes, Box Beats — all for ₹499 once. I've recommended it to 10 friends already."</p>
+      <div class="reviewer"><div class="avatar">S</div><div><div class="name">Sneha Tiwari</div><div class="role">Freelancer, Bangalore</div></div></div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"I lost my phone last month. Opened soloDS Box on my friend's laptop and everything was there. This product is a lifesaver."</p>
+      <div class="reviewer"><div class="avatar">V</div><div><div class="name">Vikram Singh</div><div class="role">Photographer, Pune</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GUARANTEE ===== -->
+<section>
+  <div class="guarantee">
+    <div class="icon">🛡️</div>
+    <h3>7-Day Money-Back Guarantee</h3>
+    <p>Try soloDS Box for 7 days. If you don't love it — for any reason — email us and we'll refund every rupee. No questions, no forms, no hassle. That's how confident we are.</p>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" style="background:rgba(139,92,246,0.03);">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <p class="section-sub">Everything you wanted to ask. Answered honestly.</p>
+
+  <details class="faq-item" open>
+    <summary>Is this really a one-time payment?</summary>
+    <p>Yes. ₹299 for Pro, ₹499 for Pro Max. Pay once, use forever. No monthly fees, no yearly renewal, no hidden charges. Ever.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Where is my data stored?</summary>
+    <p>Your files stay in <strong>your own Google Drive</strong>. We don't store anything on our servers. You own your data — always.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Do I need to install an app?</summary>
+    <p>No. soloDS Box works directly in your browser — on phone, laptop, tablet, anywhere. Just open your Box link.</p>
+  </details>
+  <details class="faq-item">
+    <summary>What is Box-to-Box Share?</summary>
+    <p>Every user gets a unique Box URL (like <code>tinyurl.com/user1</code>). You can add other users as Box contacts and send files directly to their Box — no WhatsApp, no email, no attachment limits.</p>
+  </details>
+  <details class="faq-item">
+    <summary>What is Box Meet and Box Beats?</summary>
+    <p><strong>Box Meet</strong> lets you host video meetings (up to 10 people) inside your Box — no Google Meet or Zoom needed. <strong>Box Beats</strong> is your personal music & audio streaming space. Both are Pro Max exclusives.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Can I get a refund?</summary>
+    <p>Absolutely. We offer a <strong>7-day money-back guarantee</strong>. If you're not satisfied, email us and we'll refund you fully. No questions asked.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Will I get future updates for free?</summary>
+    <p>Yes. Every update, every new feature, every improvement — free for life. No "upgrade fee," ever.</p>
+  </details>
+  <details class="faq-item">
+    <summary>How is this different from Google Drive?</summary>
+    <p>Google Drive is a raw storage tool. soloDS Box is a complete personal cloud — with PIN lock, voice notes, Box contacts, chat, video calls, music streaming, and 40+ premium features. And it's a <strong>one-time payment</strong>, not a subscription.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Is my data safe?</summary>
+    <p>Your data never touches our servers. We only connect to your Google Drive via Google's official secure OAuth. Only you have access. Complete privacy guaranteed.</p>
+  </details>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta">
+  <h2>Stop Renting Your Cloud.<br>Own It Forever for ₹299.</h2>
+  <p>Google charges ₹1,560/year. iCloud charges ₹900/year. soloDS Box charges ₹299 — once, for life. Join the private cloud revolution.</p>
+  <div class="hero-buttons">
+    <a href="https://softappweber.github.io/sushantcoder/?price=300" class="btn-primary">Get Pro — ₹299 Lifetime</a>
+    <a href="https://softappweber.github.io/sushantcoder/?price=500" class="btn-ghost">Get Pro Max — ₹499</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p style="font-size:14px;color:#a78bfa;font-weight:700;">📦 soloDS Box — Your Personal Cloud Space</p>
+  <p class="solods">— soloDS</p>
+  <p>A Software Company</p>
+  <div style="margin-top:16px;">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#howitworks">How It Works</a>
+  </div>
+  <p style="margin-top:16px;">© 2025 soloDS Box. Built by Sushant. Made in India. 🇮🇳</p>
+  <p style="margin-top:8px;font-size:11px;">soloDS Box is an independent product and is not affiliated with Google, WhatsApp, Telegram, or Apple.</p>
+</footer>
+
+<!-- ===== EXISTING TRACKING SCRIPT (preserved) ===== -->
+<script>
+(function(){
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwzWQaBC_uqjIi4JFLT1Ry5jVbw_zIH-Mo9t3LUd7WGfBRX0rqnqOHZbdZYgzTqRc1q4g/exec';
+
+  var ua = navigator.userAgent;
+  var device = /Mobile|Android|iPhone/i.test(ua) ? 'Mobile' : 'Desktop';
+  var browser = 'Unknown';
+  if(/Chrome/i.test(ua)) browser = 'Chrome';
+  else if(/Firefox/i.test(ua)) browser = 'Firefox';
+  else if(/Safari/i.test(ua)) browser = 'Safari';
+  else if(/Edge/i.test(ua)) browser = 'Edge';
+
+  var os = 'Unknown';
+  if(/Windows/i.test(ua)) os = 'Windows';
+  else if(/Mac/i.test(ua)) os = 'MacOS';
+  else if(/Linux/i.test(ua)) os = 'Linux';
+  else if(/Android/i.test(ua)) os = 'Android';
+  else if(/iPhone|iPad/i.test(ua)) os = 'iOS';
+
+  fetch('https://ipapi.co/json/')
+    .then(function(r){ return r.json(); })
+    .then(function(geo){
+      var form = new URLSearchParams();
+      form.append('action', 'track_visit');
+      form.append('data', JSON.stringify({
+        page: 'landing',
+        url: window.location.href,
+        referrer: document.referrer || 'direct',
+        ip: geo.ip || 'Unknown',
+        device: device,
+        browser: browser,
+        os: os,
+        location: (geo.city || '') + ', ' + (geo.country_name || '')
+      }));
+      return fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: form.toString()
+      });
+    })
+    .catch(function(){
+      var form = new URLSearchParams();
+      form.append('action', 'track_visit');
+      form.append('data', JSON.stringify({
+        page: 'landing',
+        url: window.location.href,
+        referrer: document.referrer || 'direct',
+        ip: 'Unknown',
+        device: device,
+        browser: browser,
+        os: os,
+        location: 'Unknown'
+      }));
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: form.toString()
+      });
+    });
+})();
+</script>
+
+</body>
+</html>
